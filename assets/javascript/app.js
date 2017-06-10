@@ -16,6 +16,8 @@ var advTime = ['Finn the Human', 'Jake the Dog', 'BMO', 'Princess BubbleGum', 'I
 
 // displaying the content
 function displayStuffs() {
+	// clear it
+	reset();
     //
     var search = $(this).attr("data-name");
     //
@@ -26,12 +28,12 @@ function displayStuffs() {
         method: 'GET'
     }).done(function(response) {
         //
-        var charDiv = $('<div class="character">');
+        var advDiv = $('<div class="character">');
         //
     })
 }
 
-// rending the buttons
+// rendering the buttons
 function renderButtons() {
 	//
     $("#at-buttons").empty();
@@ -50,4 +52,22 @@ function renderButtons() {
     }
 }
 
+// adding user input to the array
+$("#submit-button").on("click", function(event) {
+        event.preventDefault();
+        // declare variable, reads and assigns user input as value
+        var input = $("#user-input").val().trim();
+
+        // add the user input into the array
+        advTime.push(input);
+
+        // call function to turn input into a button
+        renderButtons();
+      });
+
+// resetting the display
+function reset() {
+	$('#at-section').empty();
+}
+// display the buttons
 renderButtons();
