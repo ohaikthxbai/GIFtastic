@@ -7,6 +7,14 @@ create an array of content
 each element from the array will be a button
 	previously searched content will become buttons
 searched content should bring up gifs related to what the user searched
+			might be useful?
+
+			$(document).on("click", "img", function() {
+			
+			} )
+       		//"data-animated": apiData[i].images.fixed_height.url,
+       		//"data-still": apiData[i].images.fixed_height_still.url,
+       		//"data-state": "still"
 
 */
 
@@ -31,7 +39,8 @@ function displayStuffs() {
     	// assigning response to a variable for convenience
     	var apiData = response.data;
     	//testing
-    	//console.log(apiData[1].images);
+    	//console.log(apiData);
+    	//iterating through each (10) result from the received data
     	for (i = 0; i < apiData.length; i++) {
         // create a div to hold the gifs
         var advDiv = $('<div class="adv-char">');
@@ -45,9 +54,6 @@ function displayStuffs() {
        	advGif.attr({
        		//"src": apiData[i].images.fixed_height_still.url,
        		"src": apiData[i].images.fixed_height.url,
-       		"data-animated": apiData[i].images.fixed_height.url,
-       		"data-still": apiData[i].images.fixed_height_still.url,
-       		"data-state": "still"
        	});
        	advDiv.append(paraTing);
        	advDiv.append(advGif);
@@ -99,8 +105,10 @@ function reset() {
 	$('#at-gifs').empty();
 }
 
-//
-$(document).on("click", ".math", displayStuffs);
+// when a button is clicked, display the gifs
+$(document).on("click", ".math", displayStuffs)
+// if-else statement to activate the gif from a still
+
 
 // display the buttons
 renderButtons();
