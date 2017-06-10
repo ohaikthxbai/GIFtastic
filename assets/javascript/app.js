@@ -10,13 +10,14 @@ searched content should bring up gifs related to what the user searched
 
 */
 
+$(document).ready(function() {
 // content array
 var advTime = ['Finn the Human', 'Jake the Dog', 'BMO', 'Princess BubbleGum', 'Ice King', 'Lemongrab'];
 //console.log(advTime);
 
 // displaying the content
 function displayStuffs() {
-	// clear it
+	// clearing the gif section
 	reset();
     //
     var search = $(this).attr("data-name");
@@ -27,10 +28,38 @@ function displayStuffs() {
         url: queryURL,
         method: 'GET'
     }).done(function(response) {
-        //
-        var advDiv = $('<div class="character">');
-        //
-    })
+    	// assigning response to a variable for convenience
+    	var apiData = response.data;
+    	//testing
+    	//console.log(apiData[1].images);
+    	for (i = 0; i < apiData.length; i++) {
+        // create a div to hold the gifs
+        var advDiv = $('<div class="adv-char">');
+        // store rating
+        var rating = apiData[i].rating;
+        // create an html element to display the rating
+        var paraTing = $('<p>').text("Rating: " + rating);
+        // create an img element
+        var advGif = $('<img>');
+        // adding properties to the gif
+       	advGif.attr({
+       		//"src": apiData[i].images.fixed_height_still.url,
+       		"src": apiData[i].images.fixed_height.url,
+       		"data-animated": apiData[i].images.fixed_height.url,
+       		"data-still": apiData[i].images.fixed_height_still.url,
+       		"data-state": "still"
+       	});
+       	advDiv.append(paraTing);
+       	advDiv.append(advGif);
+       	console.log(advGif);
+       	/* 
+       	note: prepending vs appending
+       	prepend inserts as FIRST child
+       	append inserts as LAST child
+		*/
+       	$("#at-gifs").prepend(advDiv);
+       }
+    });
 }
 
 // rendering the buttons
@@ -67,7 +96,13 @@ $("#submit-button").on("click", function(event) {
 
 // resetting the display
 function reset() {
-	$('#at-section').empty();
+	$('#at-gifs').empty();
 }
+
+//
+$(document).on("click", ".math", displayStuffs);
+
 // display the buttons
 renderButtons();
+
+});
