@@ -16,6 +16,17 @@ searched content should bring up gifs related to what the user searched
        		//"data-still": apiData[i].images.fixed_height_still.url,
        		//"data-state": "still"
 
+	if (state === "still") {
+	$(this).attr("src". $(this).attr("data-animate"));
+	"		.attr("data-state", "animate");
+	}
+	else {
+	$(this).attr("src", $(this).attr("data-still"));
+	$(this).attr("data-state", "still");
+	}
+
+
+
 */
 
 $(document).ready(function() {
@@ -25,13 +36,12 @@ var advTime = ['Finn the Human', 'Jake the Dog', 'BMO', 'Princess BubbleGum', 'I
 
 // displaying the content
 function displayStuffs() {
-	// clearing the gif section
+	// clearing the gif section other the results will appear over the other
 	reset();
-    //
+    // data-* - custom attribute, "setting a variable in html, so to speak"
     var search = $(this).attr("data-name");
-    //
+    // define the api gif search
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=adventure+time+" + search + "&rating=pg-13&limit=10&api_key=dc6zaTOxFJmzC";
-    //
     $.ajax({
         url: queryURL,
         method: 'GET'
@@ -52,12 +62,13 @@ function displayStuffs() {
         var advGif = $('<img>');
         // adding properties to the gif
        	advGif.attr({
+       		// testing still and animated
        		//"src": apiData[i].images.fixed_height_still.url,
        		"src": apiData[i].images.fixed_height.url,
        	});
        	advDiv.append(paraTing);
        	advDiv.append(advGif);
-       	console.log(advGif);
+       	//console.log(advGif);
        	/* 
        	note: prepending vs appending
        	prepend inserts as FIRST child
