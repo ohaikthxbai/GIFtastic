@@ -3,34 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- mobile responsiveness! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIFTASTIC!</title>
+    <title>GIFTASTIC!!</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- linkt to style sheet -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Might want to add jQuery link if I decide to use it-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
 </head>
 
 <body>
     <!-- Main Title -->
-    <div class="container">
-        <h1>What the Stuff!?</h1>
-        <p>Adventure Time GIF Search!</p>
-    </div>
-    <!-- at-name Buttons -->
-    <div id="at-buttons"></div>
-    <!-- the user input form -->
-    <div class="row">
-        <div class="col-md-6">
-            <form id="at-form">
-                <br>
-                <label for="user-input">Search a thing: </label>
-                <br>
-                <input type="text" id="user-input" placeholder="holding a place!">
-                <br>
-                <input type="submit" id="submit-button" value="Mathematical!">
-                <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>What the Stuff!?</h1>
+                <p><i>Adventure Time GIF Search!</i></p>
+            </div>
+        </div>
+        <!-- at-name Buttons -->
+        <div class="row">
+            <div class="col-md-6" id="at-buttons"></div>
+        </div>
+        <!-- the user input form -->
+        <div class="row">
+            <div class="col-md-2">
+                <form id="at-form">
+                    <br>
+                    <label for="user-input">Search a thing: </label>
+                    <br>
+                    <input type="text" id="user-input" placeholder="holding a place!">
+                    <br>
+                    <input class="btn btn-success" type="submit" id="submit-button" value="Mathematical!">
+                </form>
+            </div>
+            <div class="col-md-4" id="at-suggest">
                 <!-- for those who are unfamiliar with Adventure Time -->
                 <p>
                     <ul>Search Suggestions:
@@ -41,11 +54,15 @@
                         <li>Lady Rainicorn</li>
                     </ul>
                 </p>
-            </form>
+            </div>
+        </div>
+        <!-- <div class=""> -->
+        <!-- </div> -->
+        <!-- at-gif Section -->
+        <div class="row">
+            <div class="col-md-12" id="at-gifs"></div>
         </div>
     </div>
-    <!-- at-gif Section -->
-    <div id="at-gifs"></div>
     <script type="text/JavaScript" src="assets/javascript/app.js"></script>
 </body>
 
